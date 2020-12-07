@@ -1,0 +1,348 @@
+<?php include  "db.php"; ?>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>jQuery Mobile</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<script src="cordova.js"></script>
+
+	<script type="text/javascript">
+	function formCheck() {
+		var checked_items = 0;
+			for (i = 0; i < document.user.elements.length; i++){
+				if (document.user.elements[i].name == "user_category" && document.user.elements[i].checked)
+					checked_items++;
+			}
+
+		if (checked_items == 0) {
+			window.alert('구분을 선택해주세요.');
+			document.user.user_category.focus();
+			return false;
+		}
+
+        if (!document.user.id.value) {
+			window.alert('아이디를 입력해 주세요.');
+			document.user.id.focus();
+			return false;
+		}
+
+		if (!document.user.user_name.value) {
+			window.alert('이름을 입력해 주세요.');
+			document.user.user_name.focus();
+			return false;
+		}
+
+		if (!document.user.user_phone.value) {
+			window.alert('전화번호을 입력해 주세요.');
+			document.user.user_phone.focus();
+			return false;
+		}
+
+		if (!document.user.user_email.value) {
+			window.alert('이메일을 입력해 주세요.');
+			document.user.user_email.focus();
+			return false;
+		}
+
+		if (!document.user.user_pw.value) {
+			window.alert('비밀번호를 입력해 주세요.');
+			document.user.user_pw.focus();
+			return false;
+		}
+		user.submit();
+
+	};
+
+	// DB 입력실패로 리디렉션된 경우
+	function redirectionCheck() {
+		var result = '<?php echo $_POST['result']; ?>';
+		if (result == "fail")
+			window.alert('사용자 등록에 실패하였습니다. 잠시 후 다시 시도해 주세요.');
+		return false;
+	}
+	</script>
+
+<style>
+   li { list-style:none; }
+  .picture { list-style:none; padding:0; margin:0; }
+  .picture li { float:left; width:50%;}
+  .picture li a {display:block; margin:5px; border: 1px }
+  .picture li img { display:block; width:50%;  height:auto;}
+  .picture li img:hover { display:block; width:100%;  height:auto;}
+</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+		<div data-role="content" style="text-align:center">
+			<img src="kimk.png">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#java">자바 프로젝트</a></li>
+				<li><a href="#jsp">JSP프로젝트</a></li>
+        <li><a href="#android">안드로이드 프로젝트</a></li>
+				<li><a href="#arduino">아두이노 프로젝트</a></li>
+				<li><a href="#hybrid">하이브리드 프로젝트</a></li>
+				<li><a href="#board">게시판</a></li>
+				<li><a href="#map">학교위치</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+	<div data-role="page" id="java" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>java 프로젝트</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="kimk.png">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>java 프로젝트</h3>
+					<p>학교 학식의 식권 발매기 시스템을 표본으로 만든 프로젝트입니다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>UI 화면</h3>
+						<img src="java\javaPro.png">
+						<img src="java\javaCo1.png">
+				</div>
+				<div data-role="collapsible" >
+					<h3>주요 코드</h3>
+					<img src="java\jco1.png">
+					<img src="java\jco2.png">
+					<img src="java\jco3.png">
+					<img src="java\jco4.png">
+					<img src="java\jco5.png">
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+
+
+	<div data-role="page" id="jsp" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>jsp 프로젝트</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="bgdokdo2.png">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>jsp 프로젝트</h3>
+					<p>공공데이터를 이용한 영화 추천 사이트입니다..</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>UI 화면</h3>
+					<img src="jsp\jspui1.png">
+					<img src="jsp\jspui2.png">
+					<img src="jsp\jspui3.png">
+					<img src="jsp\jspui4.png">
+				</div>
+				<div data-role="collapsible" >
+					<h3>주요 코드</h3>
+					<img src="jsp\jspco1.png">
+					<img src="jsp\jspco2.png">
+					<img src="jsp\jspco3.png">
+					<img src="jsp\jspco4.png">
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+
+
+	<div data-role="page" id="android" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>java 프로젝트</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="bgdokdo2.png">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>java 프로젝트</h3>
+					<p>학교 학식의 식권 발매기 시스템을 표본으로 만든 프로젝트입니다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>UI 화면</h3>
+						<img src="java\javaPro.png">
+						<img src="java\javaCo1.png">
+				</div>
+				<div data-role="collapsible" >
+					<h3>주요 코드</h3>
+					<img src="java\jco1.png">
+					<img src="java\jco2.png">
+					<img src="java\jco3.png">
+					<img src="java\jco4.png">
+					<img src="java\jco5.png">
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+
+
+	<div data-role="page" id="arduino" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>java 프로젝트</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="bgdokdo2.png">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>java 프로젝트</h3>
+					<p>학교 학식의 식권 발매기 시스템을 표본으로 만든 프로젝트입니다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>UI 화면</h3>
+						<img src="java\javaPro.png">
+						<img src="java\javaCo1.png">
+				</div>
+				<div data-role="collapsible" >
+					<h3>주요 코드</h3>
+					<img src="java\jco1.png">
+					<img src="java\jco2.png">
+					<img src="java\jco3.png">
+					<img src="java\jco4.png">
+					<img src="java\jco5.png">
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+
+
+	<div data-role="page" id="hybrid" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>java 프로젝트</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="bgdokdo2.png">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>java 프로젝트</h3>
+					<p>학교 학식의 식권 발매기 시스템을 표본으로 만든 프로젝트입니다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>UI 화면</h3>
+						<img src="java\javaPro.png">
+						<img src="java\javaCo1.png">
+				</div>
+				<div data-role="collapsible" >
+					<h3>주요 코드</h3>
+					<img src="java\jco1.png">
+					<img src="java\jco2.png">
+					<img src="java\jco3.png">
+					<img src="java\jco4.png">
+					<img src="java\jco5.png">
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>김기완 포트폴리오</h1>
+		</div>
+	</div>
+
+	<div data-role="page" id="board" data-theme="b">
+	 <div data-role="header" data-theme="b">
+		 <a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+		 <h1>자유게시판</h1>
+	 </div>
+	 <div data-role="content">
+		 <table class="list-table" style="text-align:center;margin: auto;">
+			 <thead>
+					 <tr>
+							 <th width="70" >번호</th>
+								 <th width="500">제목</th>
+								 <th width="120">글쓴이</th>
+								 <th width="100">작성일</th>
+						 </tr>
+				 </thead>
+				 <?php
+					 $sql = mq("select * from board order by idx desc limit 0,15");
+						 while($board = $sql->fetch_array())
+						 {
+							 $title=$board["title"];
+							 if(strlen($title)>30)
+							 {
+								 $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
+							 }
+				 ?>
+			 <tbody>
+				 <tr>
+					 <td width="70" text-align="center"><?php echo $board['idx']; ?></td>
+					 <td width="500" text-align="center"><?php echo $title;?></td>
+					 <td width="120" text-align="center"><?php echo $board['name']?></td>
+					 <td width="100" text-align="center"><?php echo $board['date']?></td>
+				 </tr>
+			 </tbody>
+			 <?php } ?>
+		 </table>
+		 <div>
+			 <a href="write.php" data-role="button" rel="external">글쓰기</a>
+		 </div>
+		 </div>
+	 <div data-role="footer" data-position="fixed" data-theme="b">
+		 <h1>김기완 포트폴리오</h1>
+	 </div>
+ </div>
+
+ <div data-role="page" id="map" data-theme="b">
+	 <div data-role="header" data-theme="b">
+		 <a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+		 <h1>java 프로젝트</h1>
+	 </div>
+	 <div data-role="content">
+			 <div  style="text-align:center">
+				 <img src="kimk.png">
+			 </div>
+		 <div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+			 <div data-role="collapsible" data-collapsed="false">
+				 <h3>지도 보기</h3>
+				 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.633065297664!2d129.07034361520164!3d35.165770880317666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568eca70d07d243%3A0xca0acf886f784030!2z64-Z7J2Y6rO87ZWZ64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1604384902271!5m2!1sko!2skr" width="70%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			 </div>
+		 </div>
+	 </div>
+	 <div data-role="footer" data-position="fixed" data-theme="b">
+		 <h1>김기완 포트폴리오</h1>
+	 </div>
+ </div>
+
+</body>
+</html>
